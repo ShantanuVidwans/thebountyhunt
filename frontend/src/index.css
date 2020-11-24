@@ -1,0 +1,164 @@
+.mainCard{
+  width: 95vw;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  justify-content: space-between;
+  padding: 53px 33px 33px 95px;
+}
+.dash_list_main{
+  width:90%;
+  margin:20px;
+  background-color: antiquewhite;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-radius: 1%;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.247);
+}
+.list-sub{
+  padding:15px
+}
+.list-sub-end{
+
+  font-size: 22pt;
+  font-weight: 400;
+  position: absolute;
+  right:30px;
+
+}
+.list-end-mark{
+  color:green;
+  vertical-align: middle;
+}
+.list-end-cross{
+  color:rgb(128, 0, 0);
+  vertical-align: middle;
+}
+.container{
+  max-width: 1500px;
+  padding:10px;
+}
+.user-data-card{
+  display:block;
+  margin: 20px;
+  margin-top: 10%;
+  background-color: rgba(211, 211, 211, 0.26);
+  border-radius: 5%;
+  padding:20px;
+  width:90%;
+  /* height:50%; */
+}
+
+.nav-link{
+  font-size: larger;
+}
+
+/* Leaderboards */
+.lead_list_main{
+  margin:20px;
+  margin-right:10%;
+  margin-left:10%;
+  background-color: rgb(255, 249, 196);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border-radius: 1%;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.247);
+}
+.lead-list-rank{
+  text-align: center;
+width:7%;
+align-self: center;
+border: 0px 1px 0px 0px solid black;
+}
+.lead-list-user{
+width:80%;
+align-self: center;
+}
+.lead-list-points{
+  text-align: center;
+width:10%;
+align-self: center;
+}
+
+
+
+.clue-question{
+  width:80vw;
+  background-color: rgb(134, 134, 134);
+  margin:auto;
+}
+
+
+    /* Pie Chart */
+    .progress-pie-chart {
+      width:200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #E5E5E5;
+      position: relative;
+      }
+      .progress-pie-chart.gt-50 {
+      background-color: #81CE97;
+      }
+  
+      .ppc-progress {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      width: 200px;
+      height: 200px;
+      clip: rect(0, 200px, 200px, 100px);
+      }
+      .ppc-progress .ppc-progress-fill {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 100px);
+      top: calc(50% - 100px);
+      width: 200px;
+      height: 200px;
+      clip: rect(0, 100px, 200px, 0);
+      background: #81CE97;
+      transform: rotate(60deg);
+      }
+      .gt-50 .ppc-progress {
+      clip: rect(0, 100px, 200px, 0);
+      }
+      .gt-50 .ppc-progress .ppc-progress-fill {
+      clip: rect(0, 200px, 200px, 100px);
+      background: #E5E5E5;
+      }
+  
+      .ppc-percents {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      left: calc(50% - 173.91304px/2);
+      top: calc(50% - 173.91304px/2);
+      width: 173.91304px;
+      height: 173.91304px;
+      background: #fff;
+      text-align: center;
+      display: table;
+      }
+      .ppc-percents span {
+      display: block;
+      font-size: 2.6em;
+      font-weight: bold;
+      color: #81CE97;
+      }
+  
+      .pcc-percents-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+      }
+  
+      .progress-pie-chart {
+      margin: 50px auto 0;
+      }
