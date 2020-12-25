@@ -1,4 +1,4 @@
-import React ,{useEffect}from "react";
+import React ,{useEffect, useState}from "react";
 import { BrowserRouter, Switch, Redirect, Route,Link,useHistory } from "react-router-dom";
 import firebase from "./firebase";
 import Login from "./Login/login";
@@ -11,6 +11,7 @@ import Navbar from "./Navbar/navbar";
 
 function storageGetter() {
   const bol = localStorage.getItem("user") === "true";
+  console.log(bol)
   return bol; // Returns true if user is authenticated
 }
 
@@ -55,7 +56,9 @@ const PublicRoute = ({ component: Component, restricted, ...rest }) => {
 // - Private route
 
 function Routes() {
+
   let history = useHistory();
+  const [userAuthState,setUserAuthState] = useState(storageGetter())
 
   // useEffect(()=>{
   //   if(firebase.auth().currentUser){
@@ -79,11 +82,11 @@ function Routes() {
         console.log(user.uid)
         localStorage.setItem("user", "true");
         // window.location = "/dashboard"
-        // setUserAuthState(true);
+        setUserAuthState(true);
       } else {
         // No user is signed in.
         localStorage.setItem("user", "false");
-        // setUserAuthState(false);
+        setUserAuthState(false);
       }
     });
   }, []);
@@ -128,7 +131,7 @@ function Routes() {
 
             {/* Private routes */}
             <PrivateRoute
-              auth={storageGetter()}
+              auth={userAuthState}
               component={Dashboard}
               path="/dashboard"
               exact
@@ -142,7 +145,7 @@ function Routes() {
               }}
               exact
             />
-            {storageGetter()?<Redirect to="/dashboard" />:<Redirect to="/home" />}
+            {userAuthState?<Redirect to="/dashboard" />:<Redirect to="/home" />}
           </Switch>
         </div>
       </BrowserRouter>

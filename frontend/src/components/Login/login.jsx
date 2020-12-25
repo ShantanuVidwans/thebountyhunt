@@ -15,11 +15,26 @@ function Login() {
 	.auth()
 	.setPersistence(persistance)
 	.then(() => {
+		console.log("logged in")
 	   firebase.auth()
 		.signInWithEmailAndPassword(email, password)
 		.then((cred) => {
 			localStorage.setItem("user", "true");
-			history.push("/dashboard")
+			console.log(cred.user.uid)
+			firebase.database().ref("Users").once('value',snap=>{
+				console.log(snap.val())
+			})
+			firebase.database().ref("Users").child(cred.user.uid).once('value',snap=>{
+				console.log(snap.val())
+				if(snap.val() && snap.val().frombounty && snap.val().frombounty === false){
+					var setup = firebase.functions().httpsCallable('setupUserForTheBountyHuntFromMitConsole');
+					setup({uid:cred.user.uid}).then(val=>{
+						history.push("/dashboard");
+					})
+				}
+			})
+
+			
 		})
 		.catch(function (error) {
 		  // Handle Errors here.

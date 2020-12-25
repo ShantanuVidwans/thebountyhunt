@@ -7,16 +7,30 @@ function Dashboard() {
   let history = useHistory();
   const [questList,setQuestList] = useState([0,1,2,3,4,5,6,7,8,9])
   const [username,setUsername] = useState("")
+  const [rank,setRank] = useState(0)
+  const [progress,setProgress] = useState(0)
   useEffect(()=>{
     firebase.auth().onAuthStateChanged(function (user) {
       if (user) {
         // User is signed in.
         setUsername(user.email);
+        firebase.database().ref('Users').child(user.uid).child('thebountyhunt').child('rank').on('value',snap=>{
+          if(snap.val()) setRank(snap.val());
+          else setRank(0);
+        })
+        firebase.database().ref('Users').child(user.uid).child('thebountyhunt').child('currLevel').on('value',snap=>{
+          if(snap.val()){
+            setProgress(parseInt((parseInt(snap.val())/10)*100))
+          }
+          else  setProgress(0)
+        })
       } else {
         // No user is signed in.
         setUsername("");
+        setRank(0);
       }
     });
+    
   },[])
 
   return (
@@ -40,12 +54,13 @@ function Dashboard() {
                                 </div>
                                 </div>
                                 
-                                <progress style={{display: "none"}} id="progress_bar" value="0" max="20">20</progress>
+                                <progress style={{display: "none"}} id="progress_bar" value="0" max={progress}></progress>
+                                {console.log(progress)}
                                 </div>
                             </div>
                         </div>
                         <div className="user-data-card">
-                            <h3>Rank : 102</h3>
+                            <h3>Rank : {rank}</h3>
                         </div>
                         
                     </div>

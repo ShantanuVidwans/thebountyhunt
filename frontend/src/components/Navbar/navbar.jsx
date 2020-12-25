@@ -25,9 +25,9 @@ function Navbar() {
   }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/dashboard">
+      {/* <Link className="navbar-brand" to="/dashboard">
           <img src="https://s3.amazonaws.com/codechef_shared/sites/all/themes/abessive/logo.svg" width="70" height="30" className="d-inline-block align-top" alt="" />
-        </Link>
+        </Link> */}
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>

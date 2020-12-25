@@ -22,6 +22,8 @@ if(true)
 	.createUserWithEmailAndPassword(email, password)
 	.then((cred) => {
 		console.log(cred)
+		var setup = firebase.functions().httpsCallable('setupUserForTheBountyHunt');
+		setup({uid:cred.user.uid});
 	  history.push("/login");
 	})
 	.catch(function (error) {

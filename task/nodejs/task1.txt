@@ -1,0 +1,41 @@
+Task1 Nodejs
+Leaderboards
+Input : A JSON Object
+unsorted array of unstable_renderSubtreeIntoContainer. JS to sort them and output the below
+[
+  {
+    user:"username",
+    points:100,
+    dateOfLastSubmittion:"epochtimestamp"
+  },
+  {
+    user:"username1",
+    points:100,
+    dateOfLastSubmittion:"epochtimestamp"
+  },
+  {
+    user:"username2",
+    points:90,
+    dateOfLastSubmittion:"epochtimestamp"
+  },
+]
+
+
+Output : Array of JSON
+[
+  {
+    user:"username",
+    rank:1,
+    points:100,
+  },
+  {
+    user:"username1",
+    rank:1,
+    points:100,
+  },
+  {
+    user:"username2",
+    rank:2,
+    points:100,
+  },
+]

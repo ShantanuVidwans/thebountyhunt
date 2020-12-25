@@ -1,10 +1,33 @@
 import React,{useEffect, useState} from "react";
+import { unstable_renderSubtreeIntoContainer } from "react-dom";
 import { useHistory, Link } from "react-router-dom";
 import firebase from "../firebase";
 import "./home.css";
 
 function Home() {
   let history = useHistory();
+
+  let end = "Dec 25, 2020 15:00:00";
+  const endDate = new Date(end).getTime();
+  const [time, setTime] = useState({
+    day: "00",
+    hour: "00",
+    minute: "00",
+    second: "00"
+  });
+  setInterval(updateCounter, 1000);
+  function updateCounter() {
+    const now = new Date().getTime();
+    const remainingTime = endDate - now;
+    setTime({
+      day: Math.floor(remainingTime / (1000 * 60 * 60 * 24)),
+      hour: Math.floor(
+        (remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      ),
+      minute: Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60)),
+      second: Math.floor((remainingTime % (1000 * 60)) / 1000)
+    });
+  }
 
   return (<div id="page-top" className="main-home">
     <header class="masthead">
@@ -14,13 +37,13 @@ function Home() {
           <h2 class="text-white-50 mx-auto mt-2 mb-5">By CodersEra</h2>
           <Link href="#about" class="btn btn-primary js-scroll-trigger" to="/login">Get Started</Link>
 
-          {/* <div class="sponscont align-items-center">
+          <div class="sponscont align-items-center">
                   <div id="p2"><img class="spons" src="images/cblock.png" /></div>
                   <div id="p3"><img class="spons" src="images/inator.png" /></div>
                   <div id="p1"><img class="spons" src="images/codechef.png" /></div>
                   <div id="p4"><img class="spons" src="images/mozilla.png" /></div>
                   <div id="p5"><img class="spons" src="images/cric.png" /></div>
-          </div> */}
+          </div>
       </div>
       </div>
     </header>
@@ -30,38 +53,38 @@ function Home() {
 
     {/* Timer */}
     <section id="explore">
-      <div class="container">
-        <div class="row">
-          <div class="watch">
-            <img class="img-responsive" src="images/watch.png" alt="" />
-          </div>				
-          <div class="col-lg-6 col-md-4 col-md-offset-2 col-sm-5">
-            
-          </div>				
-          <div class="col-lg-4 col-sm-7 col-md-6">			
-          <h2 class="timer-text-1" style={{marginBottom:"20px"}}>Event Starts in</h2>		
-            <ul id="countdown">
-              <li>					
-                <span class="days time-font">00</span>
-                <p class="timer-text">days </p>
-              </li>
-              <li>
-                <span class="hours time-font">00</span>
-                <p class="timer-text">hours </p>
-              </li>
-              <li>
-                <span class="minutes time-font">00</span>
-                <p class="timer-text">minutes</p>
-              </li>
-              <li>
-                <span class="seconds time-font">00</span>
-                <p class="timer-text">seconds</p>
-              </li>				
-            </ul>
+        <div className="container">
+          <div className="row">
+            <div className="watch">
+              <img className="img-responsive" src="images/watch.png" alt="" />
+            </div>
+            <div className="col-lg-6 col-md-4 col-md-offset-2 col-sm-5"></div>
+            <div className="col-lg-4 col-sm-7 col-md-6">
+              <h2 className="timer-text-1" style={{ marginBottom: "20px" }}>
+                Event Starts in
+              </h2>
+              <ul id="countdown">
+                <li>
+                  <span className="days time-font">{time.day}</span>
+                  <p className="timer-text">days </p>
+                </li>
+                <li>
+                  <span className="hours time-font">{time.hour}</span>
+                  <p className="timer-text">hours </p>
+                </li>
+                <li>
+                  <span className="minutes time-font">{time.minute}</span>
+                  <p className="timer-text">minutes</p>
+                </li>
+                <li>
+                  <span className="seconds time-font">{time.second}</span>
+                  <p className="timer-text">seconds</p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
 {/* Sponsors */}
 <section id="sponsor">
@@ -74,12 +97,11 @@ function Home() {
 						<div class="carousel-inner">
 							<div class="item active">
 								<ul>
-									<li><a href="#"><img class="img-responsive" src="images/sponsor1.png" alt="" /></a></li>
-									<li><a href="#"><img class="img-responsive" src="images/sponsor2.png" alt="" /></a></li>
-									<li><a href="#"><img class="img-responsive" src="images/sponsor3.png" alt="" /></a></li>
-									<li><a href="#"><img class="img-responsive" src="images/sponsor4.png" alt="" /></a></li>
-									<li><a href="#"><img class="img-responsive" src="images/sponsor5.png" alt="" /></a></li>
-									<li><a href="#"><img class="img-responsive" src="images/sponsor6.png" alt="" /></a></li>
+									<li><a href="#"><img class="img-responsive spons2" src="images/cblock.png" alt="" /></a></li>
+									<li><a href="#"><img class="img-responsive spons2" src="images/inator.png" alt="" /></a></li>
+									<li><a href="#"><img class="img-responsive spons2" src="images/codechef.png" alt="" /></a></li>
+									<li><a href="#"><img class="img-responsive spons2" src="images/mozilla.png" alt="" /></a></li>
+									<li><a href="#"><img class="img-responsive spons2" src="images/cric.png" alt="" /></a></li>
 								</ul>
 							</div>
 						</div>
@@ -163,3 +185,6 @@ export default Home;
   </div>
 </div>
 </div> */}
+
+
+

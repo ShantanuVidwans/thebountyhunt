@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import firebase from "../firebase";
 
@@ -6,7 +6,11 @@ import firebase from "../firebase";
 function Leaderboard() {
   let history = useHistory();
   const [leaderList,setLeaderList] = useState([1,2,3,4])
-
+  useEffect(()=>{
+    firebase.database().ref('thebountyhunt').child('leaderboards').on(snap=>{
+      
+    })
+  },[])
   return (
     <div className="limiter">
 		<div className="container-login100 " style={{alignItems: "unset"}}>
