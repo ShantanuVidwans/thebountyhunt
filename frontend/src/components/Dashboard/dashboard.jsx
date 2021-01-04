@@ -11,9 +11,15 @@ function Dashboard() {
   const [progress,setProgress] = useState(0)
   useEffect(()=>{
     firebase.auth().onAuthStateChanged(function (user) {
+      
       if (user) {
+        
         // User is signed in.
         setUsername(user.email);
+        firebase.database().ref('Users').once('value',snap=>{
+          console.log("hello")
+          console.log(snap.val())
+        })
         firebase.database().ref('Users').child(user.uid).child('thebountyhunt').child('rank').on('value',snap=>{
           if(snap.val()) setRank(snap.val());
           else setRank(0);

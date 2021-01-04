@@ -25,12 +25,20 @@ function Login() {
 				console.log(snap.val())
 			})
 			firebase.database().ref("Users").child(cred.user.uid).once('value',snap=>{
-				console.log(snap.val())
-				if(snap.val() && snap.val().frombounty && snap.val().frombounty === false){
-					var setup = firebase.functions().httpsCallable('setupUserForTheBountyHuntFromMitConsole');
-					setup({uid:cred.user.uid}).then(val=>{
-						history.push("/dashboard");
-					})
+				if(snap.val() ){
+					if(snap.val().frombounty && snap.val().frombounty === false){
+						var setup = firebase.functions().httpsCallable('setupUserForTheBountyHuntFromMitConsole');
+						setup({uid:cred.user.uid}).then(val=>{
+							history.push("/dashboard");
+						})
+					}
+					else{
+						var setup = firebase.functions().httpsCallable('setupUserForTheBountyHuntFromMitConsole');
+						setup({uid:cred.user.uid}).then(val=>{
+							history.push("/dashboard");
+						})
+					}
+
 				}
 			})
 

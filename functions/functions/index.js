@@ -95,7 +95,8 @@ exports.setupUserForTheBountyHunt = functions.https.onRequest((request, response
 exports.setupUserForTheBountyHuntFromMitConsole = functions.https.onRequest((request, response) => {
     cors(request, response, () => {
         functions.logger.info("Hello logs!", {structuredData: true});
-        const uid = request.body.data.uid;
+        const uid = "033gCniiYUPDCjff1o916T7YBqQ";
+        // const uid = request.body.data.uid;
         admin.database().ref('Users').child(uid).update({
             thebountyhunt:{
                 currLevel:1,
@@ -199,13 +200,6 @@ exports.getClue = functions.https.onRequest((request, response) => {
                 alert:"Input Error! Check your input username and answer",
             }});
         }
-
-
-
-
-
-
-
 
         // response.send({data:{
         //     code: "1",

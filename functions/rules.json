@@ -1,0 +1,44 @@
+{
+    "rules": {
+      "Controls":{
+        ".read":true,
+        ".write":true
+      },
+      "LAF":{
+        ".read":true,
+        ".write":true
+      },
+      "Tasks":{
+        ".read":true,
+        ".write":true
+      },
+      "Users":{
+        "$key":{
+            "thebountyhunt":{
+                "currLevel":{
+                    ".read":true,
+                    ".write":false
+                    },
+                    "ques":{
+                        "ans":{
+                            ".read":false,
+                            ".write":false
+                        },
+                        ".read":true,
+                        ".write":false
+                    },
+                    ".read":false,
+                    ".write":false
+            },
+            "frombounty":{
+                ".read":true,
+                ".write":true    
+            },
+            ".read":true,
+            ".write":true 
+        }
+      }
+    }
+  }
+
+

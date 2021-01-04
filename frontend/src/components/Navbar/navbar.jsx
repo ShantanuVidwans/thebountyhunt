@@ -34,17 +34,17 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav ml-auto" style={{marginRight: "2%"}}>
           <li className="nav-item active">
-            <Link className="nav-link" to="/home">Home <span class="sr-only">(current)</span></Link>
+            <Link className="nav-link" to="/home">Home <span className="sr-only">(current)</span></Link>
           </li>
 
-          <li class="nav-item">
-            <Link class="nav-link" to="/leaderboards">LeaderBoards</Link>
+          <li className="nav-item">
+            <Link className="nav-link" to="/leaderboards">LeaderBoards</Link>
           </li>
         {userAuthState?<><li className="nav-item active">
-            <Link className="nav-link" to="/dashboard">Dashboard <span class="sr-only">(current)</span></Link>
+            <Link className="nav-link" to="/dashboard">Dashboard <span className="sr-only">(current)</span></Link>
           </li>
-          <li class="nav-item">
-              <div class="nav-link" style={{cursor:"pointer"}} onClick={()=>{
+          <li className="nav-item">
+              <div className="nav-link" style={{cursor:"pointer"}} onClick={()=>{
                 firebase.auth().signOut();
                 localStorage.setItem("user","false")
                 history.push("/login");
